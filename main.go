@@ -26,7 +26,7 @@ func HomeHandler(w http.ResponseWriter, r *http.Request) {
 }
 
 func VersionHandler(w http.ResponseWriter, r *http.Request) {
-    w.Write([]byte(Version))
+    w.Write([]byte(fmt.Sprintf("Version: %v | Build: %v | GitHash: %v", Version, Build, GitHash)))
 }
 
 func main() {

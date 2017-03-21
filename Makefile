@@ -1,11 +1,12 @@
 .DEFAULT: build
 
-BINARY=run
-SHARED_BIN=shared.so
+BINARY = run
+SHARED_BIN = shared.so
 
-VERSION=0.0.1
-BUILD=`date +%FT%T%z`
-GIT_HASH=`git rev-parse HEAD`
+APPLICATION = kapp
+VERSION = 0.0.1
+BUILD = $(shell date +%FT%T%z)
+GIT_HASH = $(shell git rev-parse HEAD)
 
 LDFLAGS=-ldflags "-X main.Version=${VERSION} -X main.Build=${BUILD} -X main.GitHash=${GIT_HASH}"
 
@@ -36,3 +37,7 @@ clean:
 .PHONY: run
 run:
 	go run main.go
+
+.PHONY: artefact
+artefact: build
+	docker build -t $(APPLICATION) .
