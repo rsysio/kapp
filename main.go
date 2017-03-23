@@ -22,17 +22,21 @@ func PrintVersion() {
 }
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println("Request to home")
     w.Write([]byte("Hello from kapp"))
 }
 
 func VersionHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println("Request to version")
     w.Write([]byte(fmt.Sprintf("Version: %v | Build: %v | GitHash: %v", Version, Build, GitHash)))
 }
 
 func main() {
+    listenAddress := ":8877"
     r := mux.NewRouter()
     r.HandleFunc("/", HomeHandler)
     r.HandleFunc("/version", VersionHandler)
     http.Handle("/", r)
-    http.ListenAndServe(":8877", nil)
+    http.ListenAndServe(listenAddress, nil)
+    fmt.Printf("Listening on %v\n", listenAddress)
 }
