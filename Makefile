@@ -1,12 +1,13 @@
 .DEFAULT: build
 
-BINARY = run
-SHARED_BIN = shared.so
+BINARY := run
+SHARED_BIN := shared.so
 
-APPLICATION = kapp
-VERSION = 0.0.1
-BUILD = $(shell date +%FT%T%z)
-GIT_HASH = $(shell git rev-parse HEAD)
+APPLICATION := kapp
+VERSION := 1.0.2
+BUILD := $(shell date +%FT%T%z)
+GIT_HASH := $(shell git rev-parse HEAD)
+DOCKER_REG := rsysio
 
 LDFLAGS=-ldflags "-X main.Version=${VERSION} -X main.Build=${BUILD} -X main.GitHash=${GIT_HASH}"
 
@@ -40,4 +41,5 @@ run:
 
 .PHONY: artefact
 artefact: build
-	docker build -t $(APPLICATION) .
+	docker build -t $(DOCKER_REG)/$(APPLICATION):$(VERSION) .
+	docker push $(DOCKER_REG)/$(APPLICATION):$(VERSION)
