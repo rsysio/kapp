@@ -4,7 +4,7 @@ BINARY := run
 SHARED_BIN := shared.so
 
 APPLICATION := kapp
-VERSION := 1.0.2
+VERSION := 1.0.3
 BUILD := $(shell date +%FT%T%z)
 GIT_HASH := $(shell git rev-parse HEAD)
 DOCKER_REG := rsysio

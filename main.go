@@ -31,6 +31,11 @@ func VersionHandler(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte(fmt.Sprintf("Version: %v\nBuild: %v\nGitHash: %v\n", Version, Build, GitHash)))
 }
 
+func PingHandler(w http.ResponseWriter, r *http.Request) {
+    fmt.Println("Request to ping")
+    w.Write([]byte("pong"))
+}
+
 func main() {
     listenAddress := ":8877"
     r := mux.NewRouter()
