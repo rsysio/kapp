@@ -1,3 +1,7 @@
+workspace:
+    base: /go
+    path: src/github.com/rsysio/kapp
+
 pipeline:
     build:
         image: golang
