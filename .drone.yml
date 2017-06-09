@@ -1,8 +1,9 @@
 pipeline:
-  build:
-    image: golang
-    commands:
-      - go get
-      - go build
-      - go test
-
+    build:
+        image: golang
+        commands:
+            - go build
+    publish:
+        image: ubuntu
+        commands:
+            - echo hello
