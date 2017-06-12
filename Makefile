@@ -1,9 +1,8 @@
 .DEFAULT: build
 
-BINARY := run
-SHARED_BIN := shared.so
-
 APPLICATION := kapp
+BINARY ?= $(APPLICATION)
+SHARED_BIN := shared.so
 VERSION := 1.0.3
 BUILD := $(shell date +%FT%T%z)
 GIT_HASH := $(shell git rev-parse HEAD)
