@@ -7,13 +7,13 @@ pipeline:
     build:
         image: golang:latest
         commands:
-            - ls -l /go
             - go get github.com/Masterminds/glide
             - go install github.com/Masterminds/glide
             - glide install
-            - go build
+            - go build main.go
 
     publish:
         image: ubuntu
         commands:
-            - echo hello
+            - pwd
+            - ls -l
