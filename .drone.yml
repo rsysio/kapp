@@ -13,8 +13,6 @@ pipeline:
             - make build
 
     publish:
-        image: ubuntu
-        commands:
-            - pwd
-            - ls -l
-            - ./kapp
+        image: plugins/docker
+        repo: rsysio/kapp
+        tags: [ 1.0.0, latest ]
