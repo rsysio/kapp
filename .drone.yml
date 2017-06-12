@@ -7,6 +7,8 @@ pipeline:
     build:
         image: golang:latest
         commands:
+            - pwd
+            - ls -l
             - go get github.com/Masterminds/glide
             - go install github.com/Masterminds/glide
             - glide install
