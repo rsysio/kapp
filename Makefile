@@ -13,7 +13,8 @@ LDFLAGS=-ldflags "-X main.Version=${VERSION} -X main.Build=${BUILD} -X main.GitH
 
 .PHONY: build
 build:
-	docker run --rm -w /go/src/app -v ${PWD}:/go/src/app golang:alpine go build ${LDFLAGS} -o ${BINARY} main.go
+	go build ${LDFLAGS} -o ${BINARY} main.go
+	#docker run --rm -w /go/src/app -v ${PWD}:/go/src/app golang:alpine go build ${LDFLAGS} -o ${BINARY} main.go
 
 .PHONY: build-shared
 build-shared:
