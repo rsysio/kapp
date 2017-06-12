@@ -13,23 +13,10 @@ LDFLAGS=-ldflags "-X main.Version=${VERSION} -X main.Build=${BUILD} -X main.GitH
 .PHONY: build
 build:
 	go build ${LDFLAGS} -o ${BINARY} main.go
-	#docker run --rm -w /go/src/app -v ${PWD}:/go/src/app golang:alpine go build ${LDFLAGS} -o ${BINARY} main.go
 
 .PHONY: build-shared
 build-shared:
 	go build ${LDFLAGS} -buildmode=c-shared -o ${SHARED_BIN} shared.go
-
-.PHONY: glide-build
-glide-build:
-	docker build -t glide -f Dockerfile_glide .
-
-.PHONY: glide-init
-glide-init:
-	docker run --rm -v ${PWD}:/go/src/app glide glide init
-
-.PHONY: glide-install
-glide-install:
-	docker run --rm -v ${PWD}:/go/src/app glide:latest glide install
 
 .PHONY: clean
 clean:
