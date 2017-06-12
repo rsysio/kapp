@@ -1,7 +1,7 @@
 FROM golang:alpine
 
-COPY run /go/
+COPY kapp /
 
 EXPOSE 8877
 
-CMD /go/run
+CMD /kapp
