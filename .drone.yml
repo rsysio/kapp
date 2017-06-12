@@ -15,5 +15,9 @@ pipeline:
     publish:
         image: plugins/docker
         repo: rsysio/kapp
-        tags: [ 1.0.0, latest ]
-        secrets: [ docker_username, docker_password ]
+        tags:
+            - 1.0.0
+            - latest
+        secrets:
+            - docker_username
+            - docker_password
