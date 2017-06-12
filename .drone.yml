@@ -10,7 +10,7 @@ pipeline:
             - go get github.com/Masterminds/glide
             - go install github.com/Masterminds/glide
             - glide install
-            - go build main.go
+            - make build
 
     publish:
         image: ubuntu
